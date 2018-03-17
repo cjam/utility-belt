@@ -1,9 +1,15 @@
 #!/bin/bash
-echo "Finding broken links in '"$1"'"
+dir=$1
+if [ "$dir" == "" ]; then
+  dir="."
+fi
+
+echo "Finding broken links in '"$dir"'"
+
 read -p "Delete Broken Links? [y/N]" deleteLinks
 
 if [ "$deleteLinks" == "y" ] || [ "$deleteLinks" == "Y" ]; then
-  #find $1 -type l ! -exec test -e {} \; -print | xargs rm
+  find $dir -type l ! -exec test -e {} \; -print | xargs rm
 else 
-  find $1 -type l ! -exec test -e {} \; -print
+  find $dir -type l ! -exec test -e {} \; -print
 fi
