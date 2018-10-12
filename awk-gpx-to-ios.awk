@@ -7,12 +7,11 @@ BEGIN {
     gsub(/<\/*trkseg>/,"",$0)
     gsub(/<trkpt/,"<wpt", $0)
     gsub(/<\/trkpt>/,"<\/wpt>", $0)
-    print
 }
 /<wpt/,/<\/wpt>/ {
     buffer=buffer $0
     if ($0 !~ "<\/wpt>") {
-        buffer=buffer "\n"
+        buffer=buffer $0 "\n"
     }
 }
 /<\/wpt>/ {
