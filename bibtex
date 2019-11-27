@@ -1,0 +1,4 @@
+#!/bin/sh
+SCRIPT_DIR=`dirname $0`
+COMMAND=`basename $0`
+exec "$SCRIPT_DIR/latexdockercmd.sh" $COMMAND $@

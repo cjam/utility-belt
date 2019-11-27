@@ -26,18 +26,21 @@ brew install node
 npm install -g n
 
 # Install Node 10
-n 10
+sudo n 10
 # Install and use latest Node
-n latest
+sudo n latest
 
 # Reinstall npm to fix global installs
 curl -0 -L https://npmjs.com/install.sh | sudo sh
+
+brew install yarn --without-node
 
 # Install global packages
 npm install -g react-native-cli
 
 
-
+# Install Workflows
+cp -rf "./Call Number.workflow" ~/Library/Services/
 
 
 
