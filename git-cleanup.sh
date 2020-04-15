@@ -20,5 +20,5 @@ echo "Deleting orphaned local branches"
 if [ "$machine" == "Mac" ];then
     comm -12 <(git branch | sed "s/ *//g") <(git remote prune origin | sed "s/^.*origin\///g") | xargs -L1 -J % git branch -D %
 elif [ "$machine" == "Linux" ];then
-    comm -12 <(git branch | sed "s/ *//g") <(git remote prune origin | sed "s/^.*origin\///g") | xargs -L1 -i % git branch -D %
+    comm -12 --nocheck-order <(git branch | sed "s/ *//g") <(git remote prune origin | awk "NR>2" |  sed "s/^.*origin\///g") | xargs -L1 -I % sh -c 'git branch -D %'
 fi
