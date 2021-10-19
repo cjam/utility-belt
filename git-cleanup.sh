@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# todo: May want to consider inputs at some point
+# Vanilla: https://medium.com/introduction-into-bash/bash-scripts-part-3-command-line-options-and-switches-97f1f3a30334
+# getopts: https://stackoverflow.com/questions/5474732/how-can-i-add-a-help-method-to-a-shell-script
+
 unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)     machine=Linux;;
