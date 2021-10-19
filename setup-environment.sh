@@ -20,6 +20,8 @@ echo "
     cmd = code --wait --diff $LOCAL $REMOTE
 "
 
+brew install bash-completion
+# [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Install Node and n and reinstall npm to fix after n
 brew install node
@@ -33,11 +35,16 @@ sudo n latest
 # Reinstall npm to fix global installs
 curl -0 -L https://npmjs.com/install.sh | sudo sh
 
-brew install yarn --without-node
+# brew install yarn --without-node
+
+# Right now need to install specific yarn version
+brew install https://raw.githubusercontent.com/chenrui333/homebrew-core/278b3f8eb59653907b0b8ed4b3bd6e0c954a9b1f/Formula/yarn.rb
+
 
 # Install global packages
 npm install -g react-native-cli
 
+sudo gem install cocoapods
 
 # Install Workflows
 cp -rf "./Call Number.workflow" ~/Library/Services/

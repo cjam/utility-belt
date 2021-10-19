@@ -12,16 +12,16 @@ esac
 # Modified to work with squash commits
 # https://medium.com/opendoor-labs/cleaning-up-branches-with-githubs-squash-merge-43138cc7585e
 
-MAIN_BRANCH="master"
+MAIN_BRANCH=${1-master}
 
-echo "Switching to $MAIN_BRANCH..."
+echo "Switching to branch $MAIN_BRANCH..."
 if ! git checkout $MAIN_BRANCH ; then
   echo "Error checking out $MAIN_BRANCH"
-  MAIN_BRANCH="main"
-  echo "Switching to $MAIN_BRANCH..."
-  git checkout $MAIN_BRANCH
 fi
+
 echo "Pulling latest from $MAIN_BRANCH..."
+
+# Todo: Paramerterize origin
 git pull origin $MAIN_BRANCH
 echo "Deleting orphaned local branches"
 if [ "$machine" == "Mac" ];then
